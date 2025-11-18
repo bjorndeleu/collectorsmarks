@@ -1,11 +1,78 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Collectorsmarks</title>
-    <meta charset="utf-8" />
-  </head>
-  <body>
-    <h1>Het werkt! Collectorsmarks komt hier.</h1>
-    <p>Dit is een tijdelijke testpagina.</p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collectorsmarks.org – Lugt Stamp Research</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            margin: 0;
+            padding: 40px;
+            background: #fafafa;
+            color: #222;
+            line-height: 1.6;
+        }
+        header {
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            text-align: left;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+        nav {
+            margin-top: 40px;
+        }
+        nav a {
+            display: inline-block;
+            margin-right: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+        }
+        nav a:hover {
+            color: black;
+            border-color: black;
+        }
+        footer {
+            margin-top: 80px;
+            font-size: 14px;
+            text-align: center;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Collectorsmarks.org</h1>
+        <p>
+            Een digitaal platform voor het onderzoek, de documentatie en de studie van verzamelaarsmerken, 
+            gebaseerd op de Lugt-catalogus en aanvullend academisch onderzoek.
+        </p>
+
+        <nav>
+            <a href="#">Stamps Database</a>
+            <a href="#">Research</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <footer>
+        © <span id="year"></span> Collectorsmarks.org – Under development
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
 </html>
