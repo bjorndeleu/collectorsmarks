@@ -3,12 +3,12 @@ import './globals.css';
 export const metadata = {
   title: 'Collectorsmarks.org – Lugt Stamp Research',
   description:
-    'Digitaal platform voor onderzoek naar verzamelaarsmerken, gebaseerd op de Lugt-catalogus en aanvullend academisch onderzoek.',
+    "A digital platform for the research, documentation, and study of collectors' marks on works on paper, based on the Lugt catalogue and ongoing scholarly research.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="nl">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
