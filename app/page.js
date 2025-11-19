@@ -5,15 +5,15 @@ export default function HomePage() {
         <h1>Collectorsmarks.org</h1>
         <p>
           A digital platform for the research, documentation, and study of
-          collectors&apos; marks on works on paper, based on the Lugt catalogue
-          and ongoing scholarly research.
+          collectors marks on works on paper, based on the Lugt catalogue and
+          ongoing scholarly research.
         </p>
 
         <nav>
-          <a href="#">Stamps Database</a>
-          <a href="#">Research</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
+          <a href="/stamps">Stamps Database</a>
+          <a href="/research">Research</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
         </nav>
       </header>
 
