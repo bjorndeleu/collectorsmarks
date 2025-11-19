@@ -9,13 +9,6 @@ export default function ContactPage() {
           contact channels that will be listed here.
         </p>
 
-        <nav>
-          <a href="/">Home</a>
-          <a href="/stamps">Stamps Database</a>
-          <a href="/research">Research</a>
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-        </nav>
       </header>
 
       <footer className="footer">
