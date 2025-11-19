@@ -19,7 +19,14 @@ export default function RootLayout({ children }) {
               collectors marks on works on paper, based on the Lugt catalogue
               and ongoing scholarly research.
             </p>
-            <Nav />
+                <nav>
+  <a href="/">Home</a>
+  <a href="/stamps">Stamps Database</a>
+  <a href="/research">Research</a>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+</nav>
+      
           </header>
 
           <main className="page-content">{children}</main>
