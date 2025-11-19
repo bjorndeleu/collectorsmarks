@@ -4,8 +4,9 @@ export default function HomePage() {
       <header className="hero">
         <h1>Collectorsmarks.org</h1>
         <p>
-          Een digitaal platform voor het onderzoek, de documentatie en de studie van
-          verzamelaarsmerken, gebaseerd op de Lugt-catalogus en aanvullend academisch onderzoek.
+          A digital platform for the research, documentation, and study of
+          collectors&apos; marks on works on paper, based on the Lugt catalogue
+          and ongoing scholarly research.
         </p>
 
         <nav>
