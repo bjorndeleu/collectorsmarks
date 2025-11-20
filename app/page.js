@@ -1,11 +1,4 @@
-export default function HomePage() {
-  return (
-    <>
-      <p>
-        Welcome to Collectorsmarks.org. The project is currently in development.
-        Over time, this homepage will introduce the database, participating
-        institutions, and research partners.
-      </p>
-    </>
-  );
-}
+<h1>Collectorsmarks.org</h1>
+<p className="hero-subtitle">
+A digital platform dedicated to the research, documentation, and study of collectors’ marks on works on paper, based on the Lugt catalogue and supported by ongoing scholarly provenance research.
+</p>
