@@ -1,10 +1,9 @@
 import './globals.css';
-import Nav from './Nav';
 
 export const metadata = {
   title: 'Collectorsmarks.org – Lugt Stamp Research',
   description:
-    'A digital platform for the research, documentation, and study of collectors marks on works on paper.',
+    'A digital platform for the research, documentation, and study of collectors marks on works on paper, based on the Lugt catalogue and ongoing scholarly research.',
 };
 
 export default function RootLayout({ children }) {
@@ -19,13 +18,20 @@ export default function RootLayout({ children }) {
               collectors marks on works on paper, based on the Lugt catalogue
               and ongoing scholarly research.
             </p>
-            <Nav />
+
+            <nav className="nav">
+              <a href="/">Home</a>
+              <a href="/stamps">Stamps Database</a>
+              <a href="/research">Research</a>
+              <a href="/about">About</a>
+              <a href="/contact">Contact</a>
+            </nav>
           </header>
 
           <main className="page-content">{children}</main>
 
           <footer className="footer">
-            © {new Date().getFullYear()} Collectorsmarks.org – Under development
+            © {new Date().getFullYear()} Collectorsmarks.org — Under development
           </footer>
         </div>
       </body>
