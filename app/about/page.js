@@ -1,13 +1,7 @@
-export default function AboutPage() {
-  return (
-    <>
-      <h2>About Collectorsmarks.org</h2>
-      <p>
-        Collectorsmarks.org is an independent scholarly platform dedicated to
-        the study of collectors marks on works on paper. It builds on the work
-        of Frits Lugt and aims to support provenance research for curators,
-        scholars, and the art trade.
-      </p>
-    </>
-  );
-}
+<h2>About</h2>
+<p>
+Collectorsmarks.org is an independent digital initiative focused on the study and documentation of collectors’ marks. 
+The platform builds on the monumental work of Frits Lugt while incorporating newly discovered marks, 
+updated attributions, and modern provenance methodologies. 
+The project is developed in collaboration with researchers, archives, and institutions engaged in the history of collecting.
+</p>
