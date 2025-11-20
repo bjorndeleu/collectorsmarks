@@ -19,12 +19,9 @@ export default function RootLayout({ children }) {
               collectors marks on works on paper, based on the Lugt catalogue
               and ongoing scholarly research.
             </p>
-
-            {/* Alleen HIER komt de navigatie */}
             <Nav />
           </header>
 
-          {/* Inhoud van elke pagina */}
           <main className="page-content">{children}</main>
 
           <footer className="footer">
