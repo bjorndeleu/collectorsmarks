@@ -1,36 +1,51 @@
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '../supabaseClient';
 
 export default async function StampsPage() {
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  );
+  let stamps = [];
+  let errorMessage = '';
 
-  // Query database
-  const { data: stamps, error } = await supabase
-    .from('stamps')
-    .select('*')
-    .order('lugt_number');
+  if (!supabase) {
+    errorMessage =
+      'Database connection not configured. Please check the Supabase settings.';
+  } else {
+    const { data, error } = await supabase
+      .from('stamps')
+      .select('*')
+      .order('lugt_number', { ascending: true });
 
-  if (error) {
-    console.error(error);
-    return <p>Error loading stamps.</p>;
+    if (error) {
+      console.error(error);
+      errorMessage = 'Could not load data from Supabase.';
+    } else {
+      stamps = data || [];
+    }
   }
 
   return (
     <>
-      <h2>Lugt Collectors’ Marks</h2>
+      <h2>Lugt Collectors’ Marks (Sample Records)</h2>
       <p>
-        This page lists collectors' stamps from the Lugt catalogue (sample entries).
+        This is a temporary demonstration of how entries from the Lugt catalogue
+        could appear. In the future, this page will be powered by a full
+        database with search and images.
       </p>
 
-      <ul style={{ lineHeight: '1.8' }}>
-        {stamps.map((stamp) => (
-          <li key={stamp.id}>
-            <strong>Lugt {stamp.lugt_number}</strong> — {stamp.collector_name}
-          </li>
-        ))}
-      </ul>
+      {errorMessage && <p>{errorMessage}</p>}
+
+      {!errorMessage && stamps.length === 0 && (
+        <p>No records found in the <code>stamps</code> table.</p>
+      )}
+
+      {stamps.length > 0 && (
+        <ul style={{ lineHeight: '1.8' }}>
+          {stamps.map((stamp) => (
+            <li key={stamp.id}>
+              <strong>{stamp.lugt_number}</strong> —{' '}
+              {stamp.mark_description || stamp.collector_name || 'Sample entry.'}
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
