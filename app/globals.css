@@ -171,3 +171,22 @@ nav a:hover::after {
     font-size: 0.9rem;
   }
 }
+.stamps-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.stamps-table th,
+.stamps-table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid #e5ddcf;
+  vertical-align: top;
+}
+
+.stamps-table th {
+  text-align: left;
+  font-weight: 600;
+  background: #f6f2e9;
+}
