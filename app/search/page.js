@@ -16,13 +16,13 @@ export default async function SearchPage({ searchParams }) {
     const cleaned = term.replace(/^L\./i, '').trim();
 
     try {
-const { data, error } = await supabase
+      const { data, error } = await supabase
   .from('stamps')
   .select(
     'id, lugt_number, collector_name, period, ink_color, mark_description'
   )
   .or(
-    `lugt_number.ilike.%${cleaned}%,collector_name.ilike.%${cleaned}%`
+    `lugt_number.ilike.%${cleaned}%,collector_name.ilike.%${cleaned}%,period.ilike.%${cleaned}%`
   )
   .order('lugt_number', { ascending: true });
       if (error) {
