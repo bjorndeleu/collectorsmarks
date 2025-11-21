@@ -12,11 +12,22 @@ export default function StampsTable({ stamps }) {
     let result = stamps;
 
     if (term) {
-      result = stamps.filter((s) =>
-        (s.lugt_number || '').toLowerCase().includes(term) ||
-        (s.collector_name || '').toLowerCase().includes(term)
-      );
-    }
+  result = stamps.filter((s) => {
+    const lugt = (s.lugt_number || '').toLowerCase();
+    const collector = (s.collector_name || '').toLowerCase();
+    const period = (s.period || '').toLowerCase();
+    const ink = (s.ink_color || '').toLowerCase();
+    const descr = (s.mark_description || '').toLowerCase();
+
+    return (
+      lugt.includes(term) ||
+      collector.includes(term) ||
+      period.includes(term) ||
+      ink.includes(term) ||
+      descr.includes(term)
+    );
+  });
+}
 
     const dir = sortDir === 'asc' ? 1 : -1;
     return [...result].sort((a, b) => {
