@@ -37,32 +37,36 @@ export default async function StampsPage() {
       {errorMessage && <p>{errorMessage}</p>}
 
       {!errorMessage && stamps.length === 0 && (
-        <p>No records found in the <code>stamps</code> table.</p>
+        <p>
+          No records found in the <code>stamps</code> table.
+        </p>
       )}
 
       {stamps.length > 0 && (
-        <table className="stamps-table">
-          <thead>
-            <tr>
-              <th>Lugt no.</th>
-              <th>Collector</th>
-              <th>Period</th>
-              <th>Ink colour</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {stamps.map((stamp) => (
-              <tr key={stamp.id}>
-                <td>{stamp.lugt_number}</td>
-                <td>{stamp.collector_name || '—'}</td>
-                <td>{stamp.period || '—'}</td>
-                <td>{stamp.ink_color || '—'}</td>
-                <td>{stamp.mark_description || '—'}</td>
+        <div className="table-scroll">
+          <table className="stamps-table">
+            <thead>
+              <tr>
+                <th>Lugt no.</th>
+                <th>Collector</th>
+                <th>Period</th>
+                <th>Ink colour</th>
+                <th>Description</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {stamps.map((stamp) => (
+                <tr key={stamp.id}>
+                  <td>{stamp.lugt_number}</td>
+                  <td>{stamp.collector_name || '—'}</td>
+                  <td>{stamp.period || '—'}</td>
+                  <td>{stamp.ink_color || '—'}</td>
+                  <td>{stamp.mark_description || '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </>
   );
