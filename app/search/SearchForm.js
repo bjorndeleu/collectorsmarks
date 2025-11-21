@@ -24,7 +24,7 @@ export default function SearchForm({ initialQuery }) {
         <span>Lugt no.:</span>
         <input
           type="text"
-          placeholder="e.g. L.2304 or 2304"
+          placeholder="Search Lugt no. or collector name"
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
