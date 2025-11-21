@@ -41,9 +41,8 @@ export default async function SearchPage({ searchParams }) {
     <>
       <h2>Search by Lugt number</h2>
       <p>
-        Enter a Lugt number (with or without the “L.” prefix) to find matching
-        collectors’ marks from the database.
-      </p>
+  Enter a Lugt number, a collector name, or a period (e.g. “17th century”) to search the live database.
+</p>
 
       <SearchForm initialQuery={term} />
 
