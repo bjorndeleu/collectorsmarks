@@ -237,7 +237,18 @@ nav a:hover::after {
   font-size: 0.85rem;
   cursor: pointer;
 }
+.search-main-button {
+  border: 1px solid #d4c9b9;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  background: #e9dfcb;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
 
+.search-main-button:hover {
+  background: #e1d3b5;
+}
 .stamps-sort button:hover {
   background: #f1e8d5;
 }
