@@ -16,14 +16,15 @@ export default async function SearchPage({ searchParams }) {
     const cleaned = term.replace(/^L\./i, '').trim();
 
     try {
-      const { data, error } = await supabase
-        .from('stamps')
-        .select(
-          'id, lugt_number, collector_name, period, ink_color, mark_description'
-        )
-        .ilike('lugt_number', `%${cleaned}%`)
-        .order('lugt_number', { ascending: true });
-
+const { data, error } = await supabase
+  .from('stamps')
+  .select(
+    'id, lugt_number, collector_name, period, ink_color, mark_description'
+  )
+  .or(
+    `lugt_number.ilike.%${cleaned}%,collector_name.ilike.%${cleaned}%`
+  )
+  .order('lugt_number', { ascending: true });
       if (error) {
         console.error(error);
         errorMessage = 'Could not load stamps from the database.';
