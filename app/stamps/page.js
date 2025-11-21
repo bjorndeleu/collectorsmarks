@@ -1,4 +1,5 @@
 import { supabase } from '../supabaseClient.js';
+import StampsTable from './StampsTable';
 
 export const metadata = {
   title: 'Collectorsmarks.org – Lugt Collectors’ Marks (sample)',
@@ -11,7 +12,9 @@ export default async function StampsPage() {
   try {
     const { data, error } = await supabase
       .from('stamps')
-      .select('id, lugt_number, collector_name, mark_description, period, ink_color')
+      .select(
+        'id, lugt_number, collector_name, mark_description, period, ink_color'
+      )
       .order('lugt_number', { ascending: true });
 
     if (error) {
@@ -42,32 +45,7 @@ export default async function StampsPage() {
         </p>
       )}
 
-      {stamps.length > 0 && (
-        <div className="table-scroll">
-          <table className="stamps-table">
-            <thead>
-              <tr>
-                <th>Lugt no.</th>
-                <th>Collector</th>
-                <th>Period</th>
-                <th>Ink colour</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {stamps.map((stamp) => (
-                <tr key={stamp.id}>
-                  <td>{stamp.lugt_number}</td>
-                  <td>{stamp.collector_name || '—'}</td>
-                  <td>{stamp.period || '—'}</td>
-                  <td>{stamp.ink_color || '—'}</td>
-                  <td>{stamp.mark_description || '—'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      {stamps.length > 0 && <StampsTable stamps={stamps} />}
     </>
   );
 }
