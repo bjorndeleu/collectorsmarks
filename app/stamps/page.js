@@ -1,33 +1,37 @@
 import { supabase } from '../supabaseClient.js';
 
+export const metadata = {
+  title: 'Collectorsmarks.org – Lugt Collectors’ Marks (sample)',
+};
+
 export default async function StampsPage() {
   let stamps = [];
   let errorMessage = '';
 
-  if (!supabase) {
-    errorMessage =
-      'Database connection not configured. Please check the Supabase settings.';
-  } else {
+  try {
     const { data, error } = await supabase
       .from('stamps')
-      .select('*')
+      .select('id, lugt_number, collector_name, mark_description, period, ink_color')
       .order('lugt_number', { ascending: true });
 
     if (error) {
       console.error(error);
-      errorMessage = 'Could not load data from Supabase.';
+      errorMessage = 'Could not load stamps from the database.';
     } else {
-      stamps = data || [];
+      stamps = data ?? [];
     }
+  } catch (err) {
+    console.error(err);
+    errorMessage = 'Unexpected error while loading data.';
   }
 
   return (
     <>
       <h2>Lugt Collectors’ Marks (Sample Records)</h2>
       <p>
-        This is a temporary demonstration of how entries from the Lugt catalogue
-        could appear. In the future, this page will be powered by a full
-        database with search and images.
+        The records below are loaded live from the Supabase database. In the
+        future, this table can be expanded into a full catalogue with search
+        and filtering.
       </p>
 
       {errorMessage && <p>{errorMessage}</p>}
@@ -37,14 +41,28 @@ export default async function StampsPage() {
       )}
 
       {stamps.length > 0 && (
-        <ul style={{ lineHeight: '1.8' }}>
-          {stamps.map((stamp) => (
-            <li key={stamp.id}>
-              <strong>{stamp.lugt_number}</strong> —{' '}
-              {stamp.mark_description || stamp.collector_name || 'Sample entry.'}
-            </li>
-          ))}
-        </ul>
+        <table className="stamps-table">
+          <thead>
+            <tr>
+              <th>Lugt no.</th>
+              <th>Collector</th>
+              <th>Period</th>
+              <th>Ink colour</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {stamps.map((stamp) => (
+              <tr key={stamp.id}>
+                <td>{stamp.lugt_number}</td>
+                <td>{stamp.collector_name || '—'}</td>
+                <td>{stamp.period || '—'}</td>
+                <td>{stamp.ink_color || '—'}</td>
+                <td>{stamp.mark_description || '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </>
   );
