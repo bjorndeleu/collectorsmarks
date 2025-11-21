@@ -58,7 +58,7 @@ export default function StampsTable({ stamps }) {
           <span>Search:</span>
           <input
             type="text"
-            placeholder="Lugt no. or collector"
+            placeholder="Lugt no., collector, period, ink colour…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
