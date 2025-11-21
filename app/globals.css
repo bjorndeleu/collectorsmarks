@@ -183,7 +183,89 @@ nav a:hover::after {
 .stamps-table tbody tr:nth-child(even) {
   background: #faf7f0;
 }
+.stamps-controls {
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
 
+.stamps-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stamps-search span {
+  color: #6e6456;
+}
+
+.stamps-search input {
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid #d4c9b9;
+  min-width: 210px;
+  font-size: 0.9rem;
+  background: #fdfaf5;
+}
+
+.stamps-search input:focus {
+  outline: none;
+  border-color: #b88a3b;
+  box-shadow: 0 0 0 1px rgba(184, 138, 59, 0.35);
+}
+
+.stamps-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stamps-sort span {
+  color: #6e6456;
+}
+
+.stamps-sort button {
+  border: 1px solid #d4c9b9;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  background: #f8f4ec;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.stamps-sort button:hover {
+  background: #f1e8d5;
+}
+
+/* Highlight rij bij hover */
+.stamps-table tbody tr:hover {
+  background: #f0ebdf;
+}
+
+/* responsive voor de controls */
+@media (max-width: 600px) {
+  .stamps-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stamps-search {
+    justify-content: space-between;
+  }
+
+  .stamps-search input {
+    width: 100%;
+  }
+
+  .stamps-sort {
+    flex-wrap: wrap;
+  }
+}
 /* ----------------------------------------------------
    FOOTER
 ---------------------------------------------------- */
