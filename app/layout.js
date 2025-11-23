@@ -11,6 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+  <div className="page-container">
         <div className="site-background">
           <div className="site-frame">
             <header className="site-header">
