@@ -1,4 +1,4 @@
-import { supabase } from '../supabaseClient.js';
+import { supabase } from '@/app/lib/supabaseClient';
 import StampsTable from './StampsTable';
 
 export const metadata = {
