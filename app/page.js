@@ -1,44 +1,87 @@
-export default function HomePage() {
+// app/stamps/page.js
+// Tijdelijke versie zonder Supabase, zodat de site weer buildt.
+
+const sampleStamps = [
+  {
+    lugt_number: 'L.1000',
+    collector_name: 'Unknown Dutch collector',
+    period: '17th century',
+    ink_color: 'black',
+    description: 'Initials "AB" in a circle'
+  },
+  {
+    lugt_number: 'L.1783',
+    collector_name: 'Comte de Cossé-Brissac',
+    period: '1750–1780',
+    ink_color: 'blue',
+    description: "Collector's stamp"
+  },
+  {
+    lugt_number: 'L.2304',
+    collector_name: 'Jonathan Richardson Sr.',
+    period: '18th century',
+    ink_color: 'brown',
+    description: "English collector's mark"
+  },
+  {
+    lugt_number: 'L.3981',
+    collector_name: 'Unknown',
+    period: 'late 19th century',
+    ink_color: 'purple',
+    description: 'Monogram "PHF"'
+  },
+  {
+    lugt_number: 'L.5207',
+    collector_name: 'Unidentified',
+    period: '20th century',
+    ink_color: 'black',
+    description:
+      'Provisional stamp recorded in private collections; entry pending verification'
+  }
+];
+
+export default function StampsPage() {
   return (
-    <>
-      <h2>Welcome</h2>
+    <main className="page-content">
+      <h2>Lugt Collectors’ Marks (Sample Records)</h2>
       <p>
-        Collectorsmarks.org is a digital research platform dedicated to
-        collectors’ marks on works on paper. Building on the foundational work
-        of Frits Lugt, the project brings together historical catalogues,
-        archival sources, and new discoveries in provenance research.
+        The records below are temporary sample data. Supabase integration can be
+        re-enabled later, but this static version keeps the site online while we
+        refine the architecture.
       </p>
 
-      <p>
-        In its current early phase, the site offers a small set of sample
-        records and basic information pages. Over time, it will grow into a
-        structured database and reference tool for scholars, curators, dealers,
-        and private collectors.
-      </p>
+      <div className="search-box">
+        {/* eenvoudig info-tekstje in plaats van echte search, zodat alles simpel blijft */}
+        <small>
+          Search & filtering will be reintroduced once the database connection is
+          stable.
+        </small>
+      </div>
 
-      <h3>Planned features</h3>
-      <ul>
-        <li>
-          A searchable database of collectors’ marks, based on and expanding the
-          Lugt catalogue.
-        </li>
-        <li>
-          Provenance case studies that trace the movement of individual drawings
-          and prints through collections.
-        </li>
-        <li>
-          Documentation of newly identified marks, attributions, and
-          corrections to existing entries.
-        </li>
-        <li>
-          Links to archival resources, catalogues, and related digital projects.
-        </li>
-      </ul>
-
-      <p>
-        The platform is under active development. Feedback, suggestions, and
-        offers of collaboration are very welcome.
-      </p>
-    </>
+      <div className="table-scroll">
+        <table className="stamps-table">
+          <thead>
+            <tr>
+              <th>Lugt no.</th>
+              <th>Collector</th>
+              <th>Period</th>
+              <th>Ink colour</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sampleStamps.map((stamp) => (
+              <tr key={stamp.lugt_number}>
+                <td>{stamp.lugt_number}</td>
+                <td>{stamp.collector_name}</td>
+                <td>{stamp.period}</td>
+                <td>{stamp.ink_color}</td>
+                <td>{stamp.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </main>
   );
 }
