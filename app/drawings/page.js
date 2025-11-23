@@ -1,4 +1,4 @@
-import { supabase } from '@/app/lib/supabaseClient';
+import { supabase } from '../supabaseClient';
 export const metadata = {
   title: 'Collectorsmarks.org – Drawings (sample records)',
 };
