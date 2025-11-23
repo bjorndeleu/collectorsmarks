@@ -1,171 +1,180 @@
 /* ----------------------------------------------------
-   GLOBAL BASE
+   Base
 ---------------------------------------------------- */
+
+:root {
+  --bg: #f4eee5;
+  --bg-soft: #faf5ee;
+  --text: #222222;
+  --muted: #6d6254;
+  --accent: #c27a3a;
+  --border: #e0d4c2;
+  --link: #1f3c8a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html,
 body {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #2c2620;
-  background: #f3eee4; /* warme papierkleur */
+  background: radial-gradient(circle at top, #f8f1e7 0, #f4eee5 45%, #efe5d7 100%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Links */
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 /* ----------------------------------------------------
-   PAGE FRAME (white card)
+   Page shell – rustig, text-based, à la studio-site
 ---------------------------------------------------- */
 
-.site-background {
-  min-height: 100vh;
-  padding: 32px 16px;
-}
-
-.site-frame {
-  max-width: 1050px;
+.site-shell {
+  max-width: 1120px;
   margin: 0 auto;
-  background: #ffffff;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-  border-radius: 10px;
-  padding: 32px 40px 40px;
+  padding: 3.5rem 1.75rem 4rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ----------------------------------------------------
-   TYPOGRAPHY
+   Header + hero
 ---------------------------------------------------- */
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  color: #27221d;
-  margin-top: 0;
+.hero {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.75rem;
+  margin-bottom: 2.25rem;
 }
 
-h1 {
+.hero h1 {
   font-size: 2.4rem;
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
   letter-spacing: 0.03em;
 }
 
-h2 {
-  font-size: 1.7rem;
-  margin-bottom: 0.8rem;
-}
-
-h3 {
-  font-size: 1.15rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  margin-top: 1.8rem;
-  margin-bottom: 0.4rem;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 0.9rem;
+.hero-subtitle {
+  max-width: 52rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--muted);
 }
 
 /* ----------------------------------------------------
-   HEADER + NAV
+   Main nav – bovenaan in één regel
 ---------------------------------------------------- */
 
-.site-header {
-  border-bottom: 1px solid #e0d8c8;
-  padding-bottom: 1.2rem;
-  margin-bottom: 2.1rem;
-
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
-}
-
-.site-logo h1 {
-  margin-bottom: 0.15rem;
-}
-
-.site-tagline {
-  font-size: 0.95rem;
-  color: #6e6456;
-  max-width: 720px;
-}
-
-/* Navigation (Nav.js) */
-nav {
+.main-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.4rem;
-  font-size: 0.95rem;
+  gap: 1.25rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
 }
 
-nav a {
+.main-nav a {
+  color: var(--muted);
   text-decoration: none;
-  color: #50483c;
   position: relative;
-  padding-bottom: 0.15rem;
 }
 
-nav a::after {
+.main-nav a::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -0.3rem;
   width: 0;
   height: 1px;
-  background: #b88a3b;
-  transition: width 0.2s ease;
+  background: var(--text);
+  transition: width 0.18s ease-out;
 }
 
-nav a:hover::after {
+.main-nav a:hover {
+  color: var(--text);
+}
+
+.main-nav a:hover::after {
   width: 100%;
 }
 
 /* ----------------------------------------------------
-   PAGE CONTENT
+   Page content
 ---------------------------------------------------- */
 
 .page-content {
-  max-width: 780px;
-  margin-top: 1.5rem;
+  flex: 1;
+  font-size: 0.98rem;
+  line-height: 1.7;
 }
 
 .page-content h2 {
-  margin-top: 0;
+  font-size: 1.35rem;
+  margin: 0 0 0.75rem;
 }
 
-.page-content strong {
-  font-weight: 600;
+.page-content p {
+  margin: 0 0 0.9rem;
 }
 
 /* ----------------------------------------------------
-   TABLES (Stamps)
+   Footer
+---------------------------------------------------- */
+
+.footer {
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+  padding-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ----------------------------------------------------
+   Tables (stamps / drawings)
 ---------------------------------------------------- */
 
 .table-scroll {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   overflow-x: auto;
 }
 
 .stamps-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.95rem;
-  min-width: 600px;
+  font-size: 0.9rem;
+  background: rgba(250, 245, 238, 0.9);
 }
 
 .stamps-table thead {
-  background: #f6f2e9;
+  background: #f0e4d5;
 }
 
 .stamps-table th,
 .stamps-table td {
-  padding: 0.45rem 0.55rem;
-  border-bottom: 1px solid #e5ddcf;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid #e5d9c8;
   vertical-align: top;
 }
 
@@ -175,158 +184,123 @@ nav a:hover::after {
   white-space: nowrap;
 }
 
-.stamps-table td:first-child {
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
+.stamps-table tbody tr:nth-child(2n) td {
+  background: rgba(248, 240, 231, 0.85);
 }
 
-.stamps-table tbody tr:nth-child(even) {
-  background: #faf7f0;
+/* Kleine typografische details in de tabel */
+.stamps-table td small {
+  color: var(--muted);
 }
+
+/* ----------------------------------------------------
+   Controls boven de tabel (Search / Sort)
+---------------------------------------------------- */
+
 .stamps-controls {
-  margin-top: 1.2rem;
-  margin-bottom: 0.5rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 1.5rem;
+  gap: 1rem 1.5rem;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.9rem;
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.88rem;
 }
 
-.stamps-search {
+.stamps-controls-left,
+.stamps-controls-right {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   align-items: center;
-  gap: 0.5rem;
 }
 
-.stamps-search span {
-  color: #6e6456;
-}
+/* Zoekveld */
 
-.stamps-search input {
-  padding: 0.25rem 0.55rem;
-  border-radius: 4px;
-  border: 1px solid #d4c9b9;
-  min-width: 210px;
+.search-input {
+  min-width: 220px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
   font-size: 0.9rem;
-  background: #fdfaf5;
+  background: #fdf8f1;
 }
 
-.stamps-search input:focus {
+.search-input:focus {
   outline: none;
-  border-color: #b88a3b;
-  box-shadow: 0 0 0 1px rgba(184, 138, 59, 0.35);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(194, 122, 58, 0.35);
 }
 
-.stamps-sort {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+/* Sort buttons */
 
-.stamps-sort span {
-  color: #6e6456;
-}
-
-.stamps-sort button {
-  border: 1px solid #d4c9b9;
+.pill-button {
   border-radius: 999px;
-  padding: 0.2rem 0.7rem;
-  background: #f8f4ec;
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-.search-main-button {
-  border: 1px solid #d4c9b9;
-  border-radius: 999px;
-  padding: 0.35rem 0.9rem;
-  background: #e9dfcb;
-  font-size: 0.9rem;
+  padding: 0.32rem 0.8rem;
+  font-size: 0.82rem;
+  border: 1px solid var(--border);
+  background: #fdf8f1;
+  color: var(--muted);
   cursor: pointer;
 }
 
-.search-main-button:hover {
-  background: #e1d3b5;
-}
-.stamps-sort button:hover {
-  background: #f1e8d5;
+.pill-button:hover {
+  border-color: var(--accent);
+  color: var(--text);
 }
 
-/* Highlight rij bij hover */
-.stamps-table tbody tr:hover {
-  background: #f0ebdf;
-}
-
-/* responsive voor de controls */
-@media (max-width: 600px) {
-  .stamps-controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .stamps-search {
-    justify-content: space-between;
-  }
-
-  .stamps-search input {
-    width: 100%;
-  }
-
-  .stamps-sort {
-    flex-wrap: wrap;
-  }
-}
-/* ----------------------------------------------------
-   FOOTER
----------------------------------------------------- */
-
-.site-footer {
-  border-top: 1px solid #e0d8c8;
-  margin-top: 2.5rem;
-  padding-top: 0.75rem;
-  font-size: 0.8rem;
-  color: #8c8274;
-  text-align: center;
+.pill-button.is-active {
+  background: #e4d6c2;
+  border-color: var(--accent);
+  color: var(--text);
 }
 
 /* ----------------------------------------------------
-   LINKS (generic)
+   Simple definition list style (als je die gebruikt)
 ---------------------------------------------------- */
 
-a {
-  color: inherit;
+.definition-list {
+  margin: 1.25rem 0;
+}
+
+.definition-list dt {
+  font-weight: 600;
+}
+
+.definition-list dd {
+  margin: 0 0 0.8rem;
 }
 
 /* ----------------------------------------------------
-   RESPONSIVE
+   Responsive
 ---------------------------------------------------- */
-
-@media (min-width: 900px) {
-  .site-header {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
-}
 
 @media (max-width: 768px) {
-  .site-background {
-    padding: 16px 8px;
+  .site-shell {
+    padding: 2.2rem 1.1rem 3rem;
   }
 
-  .site-frame {
-    padding: 22px 18px 26px;
-    border-radius: 0;
-    box-shadow: none;
+  .hero h1 {
+    font-size: 2rem;
   }
 
-  nav {
-    gap: 0.9rem;
-    font-size: 0.9rem;
+  .main-nav {
+    margin-top: 0.4rem;
+    gap: 0.7rem 1.1rem;
   }
 
-  .stamps-table {
-    font-size: 0.9rem;
+  .stamps-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stamps-controls-left,
+  .stamps-controls-right {
+    justify-content: flex-start;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 280px;
   }
 }
