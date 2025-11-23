@@ -1,4 +1,4 @@
-import { supabase } from '@/app/lib/supabaseClient';
+import { supabase } from '../supabaseClient';
 import SearchForm from './SearchForm';
 
 export const metadata = {
