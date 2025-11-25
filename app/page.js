@@ -1,6 +1,5 @@
 // app/stamps/page.js
-import { supabase } from '../../supabaseClient';
-
+import { supabaseClient } from '@/lib/supabaseClient'
 export const metadata = {
   title: 'Collectorsmarks.org – Lugt Collectors’ Marks',
 };
