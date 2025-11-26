@@ -1,38 +1,34 @@
 import './globals.css';
-import Nav from './Nav';
+import Link from 'next/link';
 
 export const metadata = {
-  title: 'Collectorsmarks.org – Lugt Stamp Research',
-  description:
-    'A digital platform for the research, documentation, and study of collectors marks on works on paper, based on the Lugt catalogue and ongoing scholarly research.',
+  title: 'Old Master Drawings & Lugt Stamps',
+  description: 'Searchable database of drawings and collectors’ marks',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
-  <div className="page-container">
-        <div className="site-background">
-          <div className="site-frame">
-            <header className="site-header">
-              <div className="site-logo">
-                <h1>Collectorsmarks.org</h1>
-                <p className="site-tagline">
-                  A digital platform for the research, documentation, and study of
-                  collectors marks on works on paper, based on the Lugt catalogue and
-                  ongoing scholarly research.
-                </p>
-              </div>
-              <Nav />
-            </header>
-
-            <main className="page-content">{children}</main>
-
-            <footer className="site-footer">
-              © {new Date().getFullYear()} Collectorsmarks.org – Under development
-            </footer>
+        <header className="site-header">
+          <div className="nav-inner">
+            <Link href="/" className="logo">
+              OMD
+            </Link>
+            <nav className="nav-links">
+              <Link href="/">Home</Link>
+              <Link href="/search">Search</Link>
+              <Link href="/research">Research</Link>
+              <Link href="/about">About</Link>
+              <Link href="/contact">Contact</Link>
+            </nav>
           </div>
-        </div>
+        </header>
+        <main className="site-main">{children}</main>
       </body>
     </html>
   );
