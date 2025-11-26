@@ -246,3 +246,47 @@ a {
     column-count: 1;
   }
 }
+.hero.hero-slider {
+  position: relative;
+  overflow: hidden;
+  padding: 0; /* overlay regelt de padding */
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.02); /* klein beetje zoom geeft filmisch effect */
+  transition: opacity 1.3s ease-in-out, transform 1.3s ease-in-out;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-overlay-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 40px;
+}
+
+/* op kleinere schermen wat compacter */
+@media (max-width: 700px) {
+  .hero-overlay-inner {
+    margin: 24px;
+  }
+  .hero-title {
+    font-size: 26px;
+  }
+  .hero-subtitle {
+    font-size: 15px;
+  }
+}
