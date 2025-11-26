@@ -246,18 +246,50 @@ a {
     column-count: 1;
   }
 }
+/* HERO SLIDER BASIS */
+
 .hero.hero-slider {
   position: relative;
   overflow: hidden;
-  padding: 0; /* overlay regelt de padding */
+  min-height: 55vh;
+  border-radius: 16px;
 }
+
+/* vignette + paper grain via pseudo-elementen */
+.hero.hero-slider::before,
+.hero.hero-slider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Donkere vignette */
+.hero.hero-slider::before {
+  background:
+    radial-gradient(circle at top left, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.55) 75%),
+    radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.55) 75%);
+  mix-blend-mode: multiply;
+}
+
+/* Paper grain – maak zelf een file /public/paper-grain.png */
+.hero.hero-slider::after {
+  background-image: url('/paper-grain.png');
+  background-size: cover;
+  opacity: 0.22;
+  mix-blend-mode: soft-light;
+}
+
+/* SLIDES */
 
 .hero-slide {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: scale(1.02); /* klein beetje zoom geeft filmisch effect */
-  transition: opacity 1.3s ease-in-out, transform 1.3s ease-in-out;
+  transform: scale(1.04); /* iets ingezoomd */
+  transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+  z-index: 0;
 }
 
 .hero-slide img {
@@ -268,25 +300,95 @@ a {
 
 .hero-slide.is-active {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1); /* zoomt zachtjes naar binnen */
 }
+
+/* Overlay met tekst boven alles */
 
 .hero-overlay-inner {
   position: relative;
   z-index: 2;
-  max-width: 700px;
+  max-width: 720px;
   margin: 40px;
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: radial-gradient(
+      circle at top left,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.85)
+    );
+  color: #fff;
 }
 
-/* op kleinere schermen wat compacter */
-@media (max-width: 700px) {
-  .hero-overlay-inner {
-    margin: 24px;
+/* Watermark-stijl */
+
+.hero-watermark {
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  text-align: right;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 12px;
+  opacity: 0.55;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-watermark span {
+  display: block;
+  font-size: 9px;
+  opacity: 0.8;
+  letter-spacing: 0.08em;
+}
+
+/* Klein beetje glow/animatie op watermark als de slide verandert (optioneel subtiel) */
+.hero-slide.is-active ~ .hero-overlay-inner .hero-watermark {
+  animation: watermark-pulse 1.2s ease-out;
+}
+
+@keyframes watermark-pulse {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
   }
+  50% {
+    transform: translateY(-1px) scale(1.02);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.55;
+  }
+}
+
+/* Responsiveness */
+
+@media (max-width: 700px) {
+  .hero.hero-slider {
+    border-radius: 0;
+    min-height: 65vh;
+  }
+
+  .hero-overlay-inner {
+    margin: 24px 16px;
+    padding: 20px 18px;
+  }
+
   .hero-title {
     font-size: 26px;
   }
+
   .hero-subtitle {
     font-size: 15px;
+  }
+
+  .hero-watermark {
+    right: 16px;
+    bottom: 14px;
+    font-size: 10px;
   }
 }
