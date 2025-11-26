@@ -11,15 +11,18 @@ export default function HomePage() {
     >
       <div className="hero-overlay">
         <h1 className="hero-title">
-          Old Master Drawings &amp; Collectors’ Marks
+          Exploring works on paper through collectors’ marks.
         </h1>
+
         <p className="hero-subtitle">
-          Explore drawings, Lugt stamps and provenance from collections worldwide.
+          A platform for researching centuries of collecting and ownership history.
         </p>
+
         <div className="hero-actions">
           <Link href="/search">
             <button className="btn-red">Start search</button>
           </Link>
+
           <Link href="/research">
             <button className="btn-red" style={{ background: '#333' }}>
               Research tools
