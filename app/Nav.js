@@ -1,12 +1,21 @@
+import Link from 'next/link';
+
 export default function Nav() {
   return (
-    <nav className="main-nav">
-      <a href="/">Home</a>
-      <a href="/stamps">Stamps Database</a>
-      <a href="/drawings">Drawings</a>
-      <a href="/research">Research</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-    </nav>
+    <header className="site-header">
+      <div className="nav-inner">
+        <Link href="/" className="logo">
+          OMD
+        </Link>
+
+        <nav className="nav-links">
+          <Link href="/">Home</Link>
+          <Link href="/search">Search</Link>
+          <Link href="/research">Research</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
+        </nav>
+      </div>
+    </header>
   );
 }
