@@ -1,36 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
+import { supabase } from '../lib/supabaseClient';
 
-type Drawing = {
-  id: number;
-  title: string;
-  artist_name: string | null;
-  collection_name: string | null;
-  country: string | null;
-  continent: string | null;
-  medium: string | null;
-  category: string | null;
-  date_year: number | null;
-  lugt_stamp: string | null;
-  image_url: string | null;
-};
-
-type Filters = {
-  keyword: string;
-  artist: string;
-  collection: string;
-  country: string;
-  continent: string;
-  medium: string;
-  category: string;
-  dateFrom: string;
-  dateTo: string;
-  lugtStamp: string;
-};
-
-const initialFilters: Filters = {
+const initialFilters = {
   keyword: '',
   artist: '',
   collection: '',
@@ -43,45 +16,44 @@ const initialFilters: Filters = {
   lugtStamp: '',
 };
 
-type Option = { value: string; label: string };
-
 export default function SearchPage() {
-  const [filters, setFilters] = useState<Filters>(initialFilters);
-  const [results, setResults] = useState<Drawing[]>([]);
+  const [filters, setFilters] = useState(initialFilters);
+  const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const [artists, setArtists] = useState<Option[]>([]);
-  const [collections, setCollections] = useState<Option[]>([]);
-  const [countries, setCountries] = useState<Option[]>([]);
-  const [continents, setContinents] = useState<Option[]>([]);
-  const [media, setMedia] = useState<Option[]>([]);
-  const [categories, setCategories] = useState<Option[]>([]);
-  const [stamps, setStamps] = useState<Option[]>([]);
+  const [artists, setArtists] = useState([]);
+  const [collections, setCollections] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [continents, setContinents] = useState([]);
+  const [media, setMedia] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [stamps, setStamps] = useState([]);
 
-  // filter-opties laden
   useEffect(() => {
     loadFilterOptions();
     handleSearch();
   }, []);
 
-  async function loadFilterOptions() {
-    async function distinct(column: string): Promise<Option[]> {
-      const { data, error } = await supabase
-        .from('drawings')
-        .select(`${column}`, { distinct: true })
-        .not(column, 'is', null);
+  async function distinct(column) {
+    const { data, error } = await supabase
+      .from('drawings')
+      .select(column, { distinct: true })
+      .not(column, 'is', null);
 
-      if (error) {
-        console.error(error);
-        return [];
-      }
-      const vals = (data as any[])
-        .map((row) => row[column] as string)
-        .filter(Boolean)
-        .sort((a, b) => a.localeCompare(b));
-      return vals.map((v) => ({ value: v, label: v }));
+    if (error) {
+      console.error(error);
+      return [];
     }
 
+    const vals = data
+      .map((row) => row[column])
+      .filter(Boolean)
+      .sort((a, b) => a.localeCompare(b));
+
+    return vals.map((v) => ({ value: v, label: v }));
+  }
+
+  async function loadFilterOptions() {
     setArtists(await distinct('artist_name'));
     setCollections(await distinct('collection_name'));
     setCountries(await distinct('country'));
@@ -102,7 +74,6 @@ export default function SearchPage() {
 
     if (filters.keyword.trim()) {
       const kw = filters.keyword.trim();
-      // zoek in titel + beschrijving (als je description-kolom hebt)
       query = query.or(
         `title.ilike.%${kw}%,description.ilike.%${kw}%`
       );
@@ -129,13 +100,13 @@ export default function SearchPage() {
       console.error(error);
       setResults([]);
     } else {
-      setResults((data as Drawing[]) || []);
+      setResults(data || []);
     }
 
     setLoading(false);
   }
 
-  function updateFilter<K extends keyof Filters>(key: K, value: Filters[K]) {
+  function updateFilter(key, value) {
     setFilters((prev) => ({ ...prev, [key]: value }));
   }
 
@@ -143,7 +114,6 @@ export default function SearchPage() {
     <div>
       <h1 className="page-title">Search</h1>
 
-      {/* keyword search + knop */}
       <div className="search-bar-row">
         <input
           className="input"
@@ -157,7 +127,6 @@ export default function SearchPage() {
         </button>
       </div>
 
-      {/* filterpanel */}
       <div className="filters-panel">
         <div className="field">
           <span className="label">Artist</span>
@@ -294,15 +263,11 @@ export default function SearchPage() {
         </div>
       </div>
 
-      {/* toolbar */}
       <div className="toolbar">
-        <span>
-          {loading ? 'Loading…' : `${results.length} result(s)`}
-        </span>
-        <span>Sort order: by date ↑ (placeholder)</span>
+        <span>{loading ? 'Loading…' : `${results.length} result(s)`}</span>
+        <span>Sort order: by date ↑</span>
       </div>
 
-      {/* grid met tekeningen */}
       <div className="grid">
         {results.map((d) => (
           <figure key={d.id} className="grid-item">
