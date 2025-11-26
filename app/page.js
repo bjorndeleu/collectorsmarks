@@ -1,54 +1,32 @@
-// app/stamps/page.js
-import { supabaseClient } from '@/lib/supabaseClient'
-export const metadata = {
-  title: 'Collectorsmarks.org – Lugt Collectors’ Marks',
-};
+import Link from 'next/link';
 
-export default async function StampsPage() {
-  // Data ophalen
-  const { data, error } = await supabase
-    .from('stamps')
-    .select('id, lugt_number, collector_name, period, ink_color, mark_description')
-    .order('lugt_number', { ascending: true });
-
-  // Foutmelding tonen
-  if (error) {
-    return (
-      <main className="page-content">
-        <h2>Lugt Collectors’ Marks</h2>
-        <p>⚠️ Error loading stamps: {error.message}</p>
-      </main>
-    );
-  }
-
+export default function HomePage() {
   return (
-    <main className="page-content">
-      <h2>Lugt Collectors’ Marks</h2>
-      <p>The records below are loaded live from the Supabase database.</p>
-
-      <table className="stamps-table">
-        <thead>
-          <tr>
-            <th>Lugt no.</th>
-            <th>Collector</th>
-            <th>Period</th>
-            <th>Ink colour</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {data?.map((row) => (
-            <tr key={row.id}>
-              <td>{row.lugt_number}</td>
-              <td>{row.collector_name}</td>
-              <td>{row.period}</td>
-              <td>{row.ink_color}</td>
-              <td>{row.mark_description}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </main>
+    <section
+      className="hero"
+      style={{
+        backgroundImage:
+          'url(https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&w=1200)',
+      }}
+    >
+      <div className="hero-overlay">
+        <h1 className="hero-title">
+          Old Master Drawings &amp; Collectors’ Marks
+        </h1>
+        <p className="hero-subtitle">
+          Explore drawings, Lugt stamps and provenance from collections worldwide.
+        </p>
+        <div className="hero-actions">
+          <Link href="/search">
+            <button className="btn-red">Start search</button>
+          </Link>
+          <Link href="/research">
+            <button className="btn-red" style={{ background: '#333' }}>
+              Research tools
+            </button>
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
