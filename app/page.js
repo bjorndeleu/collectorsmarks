@@ -3,28 +3,32 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-// hier zet je de URLs van je tekeningen
+// Gebruik hier de beelden die ik je eerder gaf
 const HERO_IMAGES = [
-  'https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&w=1600', // vervang door echte old master
-  'https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  'https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?auto=compress&cs=tinysrgb&w=1600'
+  "https://images.metmuseum.org/CRDImages/dp/original/DP802938.jpg",
+  "https://images.metmuseum.org/CRDImages/dp/original/DP811674.jpg",
+  "https://images.metmuseum.org/CRDImages/dp/original/DP827335.jpg",
+  "https://lh3.googleusercontent.com/pw/AP1GczPJx8CwQytciDhT12ZkCH1Ca_FcY_PFp3LeiK0gtS10nRIBq2lGNvLIzIAyBvQhGVY39R06UJNKm5-oJskcO7Qt3Iti0l813cG1fPoA2kNjgPq5Sf1=w2400",
+  "https://images.metmuseum.org/CRDImages/dp/original/DP123703.jpg",
+  "https://images.metmuseum.org/CRDImages/dp/original/DP236020.jpg"
 ];
+
+const SLIDE_INTERVAL = 10000; // 10 seconden – hier kun je de snelheid aanpassen
 
 export default function HomePage() {
   const [index, setIndex] = useState(0);
 
-  // automatisch elke 7 seconden naar de volgende slide
   useEffect(() => {
     const id = setInterval(() => {
       setIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, 7000);
+    }, SLIDE_INTERVAL);
 
     return () => clearInterval(id);
   }, []);
 
   return (
     <section className="hero hero-slider">
-      {/* achtergrond-slides */}
+      {/* Achtergrond-slides */}
       {HERO_IMAGES.map((src, i) => (
         <div
           key={src + i}
@@ -34,7 +38,7 @@ export default function HomePage() {
         </div>
       ))}
 
-      {/* tekstlaag */}
+      {/* Vaste overlay (vignette + paper grain worden via CSS gedaan) */}
       <div className="hero-overlay hero-overlay-inner">
         <h1 className="hero-title">
           Exploring works on paper through collectors’ marks.
@@ -54,6 +58,12 @@ export default function HomePage() {
               Research tools
             </button>
           </Link>
+        </div>
+
+        {/* Lugt “watermark” */}
+        <div className="hero-watermark">
+          LUGT<br />
+          <span>collectors&apos; marks</span>
         </div>
       </div>
     </section>
