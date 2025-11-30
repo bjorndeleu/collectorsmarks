@@ -4,8 +4,8 @@ import hero from "../guercino-hero.jpg";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen text-white overflow-hidden">
-      {/* Achtergrondbeeld met trage zoom-out */}
+    <main className="relative min-h-screen text-white overflow-hidden bg-black">
+      {/* Achtergrond: Guercino-tekening met trage zoom-out */}
       <div className="absolute inset-0 -z-10">
         <Image
           src={hero}
@@ -16,12 +16,12 @@ export default function Home() {
         />
       </div>
 
-      {/* Donkere overlay voor leesbaarheid */}
-      <div className="absolute inset-0 -z-10 bg-black/35" />
+      {/* Donkere sluier voor leesbaarheid */}
+      <div className="absolute inset-0 -z-10 bg-black/40" />
 
-      {/* Inhoud bovenop het beeld */}
+      {/* Content bovenop het beeld */}
       <div className="relative flex flex-col min-h-screen">
-        {/* Globale navigatie (je bestaande Nav.js) */}
+        {/* Bestaande navigatiebalk */}
         <Nav />
 
         {/* Hero-tekst gecentreerd */}
@@ -38,7 +38,7 @@ export default function Home() {
         {/* Footer / logo linksonder */}
         <footer className="flex items-end justify-between px-8 pb-6 text-xs">
           <div className="flex items-center gap-3">
-            {/* CM-monogram: hier kan later je echte logo-beeld komen */}
+            {/* CM-monogram (placeholder) */}
             <div className="w-10 h-10 border border-white/70 rounded-full flex items-center justify-center text-xs tracking-[0.3em]">
               CM
             </div>
