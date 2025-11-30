@@ -1,71 +1,56 @@
-'use client';
+import Image from "next/image";
+import Nav from "./Nav";
+import hero from "../guercino-hero.jpg";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-
-// Gebruik hier de beelden die ik je eerder gaf
-const HERO_IMAGES = [
-  "https://images.metmuseum.org/CRDImages/dp/original/DP802938.jpg",
-  "https://images.metmuseum.org/CRDImages/dp/original/DP811674.jpg",
-  "https://images.metmuseum.org/CRDImages/dp/original/DP827335.jpg",
-  "https://lh3.googleusercontent.com/pw/AP1GczPJx8CwQytciDhT12ZkCH1Ca_FcY_PFp3LeiK0gtS10nRIBq2lGNvLIzIAyBvQhGVY39R06UJNKm5-oJskcO7Qt3Iti0l813cG1fPoA2kNjgPq5Sf1=w2400",
-  "https://images.metmuseum.org/CRDImages/dp/original/DP123703.jpg",
-  "https://images.metmuseum.org/CRDImages/dp/original/DP236020.jpg"
-];
-
-const SLIDE_INTERVAL = 10000; // 10 seconden – hier kun je de snelheid aanpassen
-
-export default function HomePage() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, SLIDE_INTERVAL);
-
-    return () => clearInterval(id);
-  }, []);
-
+export default function Home() {
   return (
-    <section className="hero hero-slider">
-      {/* Achtergrond-slides */}
-      {HERO_IMAGES.map((src, i) => (
-        <div
-          key={src + i}
-          className={`hero-slide ${i === index ? 'is-active' : ''}`}
-        >
-          <img src={src} alt="Old master drawing" />
-        </div>
-      ))}
-
-      {/* Vaste overlay (vignette + paper grain worden via CSS gedaan) */}
-      <div className="hero-overlay hero-overlay-inner">
-        <h1 className="hero-title">
-          Exploring works on paper through collectors’ marks.
-        </h1>
-
-        <p className="hero-subtitle">
-          A platform for researching centuries of collecting and ownership history.
-        </p>
-
-        <div className="hero-actions">
-          <Link href="/search">
-            <button className="btn-red">Start search</button>
-          </Link>
-
-          <Link href="/research">
-            <button className="btn-red" style={{ background: '#333' }}>
-              Research tools
-            </button>
-          </Link>
-        </div>
-
-        {/* Lugt “watermark” */}
-        <div className="hero-watermark">
-          LUGT<br />
-          <span>collectors&apos; marks</span>
-        </div>
+    <main className="relative min-h-screen text-white overflow-hidden">
+      {/* Achtergrondbeeld met trage zoom-out */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src={hero}
+          alt="Old master drawing of the Mocking of Christ"
+          fill
+          priority
+          className="object-cover animate-zoom-out"
+        />
       </div>
-    </section>
+
+      {/* Donkere overlay voor leesbaarheid */}
+      <div className="absolute inset-0 -z-10 bg-black/35" />
+
+      {/* Inhoud bovenop het beeld */}
+      <div className="relative flex flex-col min-h-screen">
+        {/* Globale navigatie (je bestaande Nav.js) */}
+        <Nav />
+
+        {/* Hero-tekst gecentreerd */}
+        <section className="flex-1 flex flex-col items-center justify-center px-6 text-center">
+          <h1 className="text-4xl md:text-6xl font-light tracking-[0.3em] uppercase mb-4">
+            Collectors Marks
+          </h1>
+          <p className="max-w-2xl text-sm md:text-base leading-relaxed">
+            Discover works on paper through their collectors’ marks – a research
+            platform to witness centuries of collecting and ownership history.
+          </p>
+        </section>
+
+        {/* Footer / logo linksonder */}
+        <footer className="flex items-end justify-between px-8 pb-6 text-xs">
+          <div className="flex items-center gap-3">
+            {/* CM-monogram: hier kan later je echte logo-beeld komen */}
+            <div className="w-10 h-10 border border-white/70 rounded-full flex items-center justify-center text-xs tracking-[0.3em]">
+              CM
+            </div>
+            <span className="opacity-70">
+              Old Master Drawings – Provenance &amp; Collectors’ Marks
+            </span>
+          </div>
+          <div className="opacity-60">
+            © {new Date().getFullYear()} Collectors Marks
+          </div>
+        </footer>
+      </div>
+    </main>
   );
 }
