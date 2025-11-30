@@ -392,3 +392,16 @@ a {
     font-size: 10px;
   }
 }
+/* Trage zoom-out voor het hero-beeld */
+@keyframes zoomOutSlow {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-zoom-out {
+  animation: zoomOutSlow 20s ease-out forwards;
+}
