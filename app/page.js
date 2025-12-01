@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Nav from "./Nav";
-import hero from "../guercino-hero.jpg";
+
 
 export default function Home() {
   return (
