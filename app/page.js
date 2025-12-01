@@ -1,5 +1,12 @@
 import Image from "next/image";
 import Nav from "./Nav";
+<Image
+  src="/guercino-hero.jpg"
+  alt="Old master drawing of the Mocking of Christ"
+  fill
+  priority
+  className="object-cover animate-zoom-out"
+/>
 
 
 export default function Home() {
