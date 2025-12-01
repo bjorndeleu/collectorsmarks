@@ -18,16 +18,16 @@ export default function Home() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/20 via-black/30 to-black/60" />
 
       {/* Content (Nav zit in layout.js, dus hier alleen hero-tekst) */}
-      <section className="flex flex-col items-center justify-center min-h-screen px-6 pt-24 text-center">
-        <h1 className="text-4xl md:text-6xl font-light tracking-[0.3em] uppercase mb-4">
-          Collectors Marks
-        </h1>
-        <p className="max-w-2xl text-sm md:text-base leading-relaxed">
-          Discover works on paper through their collectors&apos; marks – a
-          research platform to witness centuries of collecting and ownership
-          history.
-        </p>
-      </section>
+      <section className="flex flex-col items-center justify-center min-h-screen px-8 md:px-12 text-center">
+  <h1 className="text-4xl md:text-6xl font-light tracking-[0.3em] uppercase mb-6">
+    Collectors Marks
+  </h1>
+
+  <p className="max-w-2xl text-base md:text-lg leading-relaxed px-2 md:px-0">
+    Discover works on paper through their collectors&apos; marks – a research
+    platform to witness centuries of collecting and ownership history.
+  </p>
+</section>
     </main>
   );
 }
