@@ -1,13 +1,5 @@
 import Image from "next/image";
 import Nav from "./Nav";
-<Image
-  src="/guercino-hero.jpg"
-  alt="Old master drawing of the Mocking of Christ"
-  fill
-  priority
-  className="object-cover animate-zoom-out"
-/>
-
 
 export default function Home() {
   return (
@@ -15,7 +7,7 @@ export default function Home() {
       {/* Achtergrond: Guercino-tekening met trage zoom-out */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src={hero}
+          src="/guercino-hero.jpg"
           alt="Old master drawing of the Mocking of Christ"
           fill
           priority
@@ -28,10 +20,8 @@ export default function Home() {
 
       {/* Content bovenop het beeld */}
       <div className="relative flex flex-col min-h-screen">
-        {/* Bestaande navigatiebalk */}
         <Nav />
 
-        {/* Hero-tekst gecentreerd */}
         <section className="flex-1 flex flex-col items-center justify-center px-6 text-center">
           <h1 className="text-4xl md:text-6xl font-light tracking-[0.3em] uppercase mb-4">
             Collectors Marks
@@ -42,10 +32,8 @@ export default function Home() {
           </p>
         </section>
 
-        {/* Footer / logo linksonder */}
         <footer className="flex items-end justify-between px-8 pb-6 text-xs">
           <div className="flex items-center gap-3">
-            {/* CM-monogram (placeholder) */}
             <div className="w-10 h-10 border border-white/70 rounded-full flex items-center justify-center text-xs tracking-[0.3em]">
               CM
             </div>
