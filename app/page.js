@@ -2,32 +2,52 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen text-white overflow-hidden bg-black">
-      {/* Achtergrond: tekening met trage zoom-out */}
+    <main className="relative w-full min-h-screen">
+
+      {/* Hero Background Image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/guercino-hero.jpg"   // of jouw huidige bestand in /public
-          alt="Old master drawing"
+          src="/guercino-hero.jpg"
+          alt="Collectors Marks Hero"
           fill
           priority
-          className="object-cover animate-zoom-out"
+          className="object-cover object-center"
         />
+        <div className="absolute inset-0 bg-black/40" /> {/* subtle dark overlay */}
       </div>
 
-      {/* Gradient overlay (onderaan donkerder voor tekst) */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/20 via-black/30 to-black/60" />
+      {/* Hero Content */}
+      <section className="flex flex-col items-center justify-center min-h-screen px-6 md:px-10 text-center">
 
-      {/* Content (Nav zit in layout.js, dus hier alleen hero-tekst) */}
-      <section className="flex flex-col items-center justify-center min-h-screen px-8 md:px-12 text-center">
-  <h1 className="text-4xl md:text-6xl font-light tracking-[0.3em] uppercase mb-6">
-    Collectors Marks
-  </h1>
+        <p className="text-lg md:text-xl text-white/80 mb-3">
+          Welcome to
+        </p>
 
-  <p className="max-w-2xl text-base md:text-lg leading-relaxed px-2 md:px-0">
-    Discover works on paper through their collectors&apos; marks – a research
-    platform to witness centuries of collecting and ownership history.
-  </p>
-</section>
+        <h1 className="text-4xl md:text-6xl font-light tracking-wide text-white mb-4">
+          Collectors Marks
+        </h1>
+
+        <p className="max-w-2xl text-base md:text-lg text-white/90 leading-relaxed mb-10">
+          Exploring works on paper through collectors’ marks — a research platform
+          for uncovering centuries of collecting and ownership history.
+        </p>
+
+        <div className="flex gap-4">
+          <a
+            href="/search"
+            className="px-6 py-3 rounded-full text-white bg-red-700 hover:bg-red-800 transition"
+          >
+            Start search
+          </a>
+
+          <a
+            href="/research"
+            className="px-6 py-3 rounded-full text-black bg-white/90 hover:bg-white transition"
+          >
+            Research tools
+          </a>
+        </div>
+      </section>
     </main>
   );
 }
