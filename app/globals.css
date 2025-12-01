@@ -402,5 +402,7 @@ a {
   }
 }
 
-.animate-zoom-out {
-  animation: zoomOutSlow 20s ease-out forwards;
+
+  .animate-zoom-out {
+    animation: zoomOutSlow 20s ease-out forwards;
+}
