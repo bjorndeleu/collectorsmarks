@@ -406,3 +406,8 @@ a {
   .animate-zoom-out {
     animation: zoomOutSlow 20s ease-out forwards;
 }
+html,
+body {
+  height: 100%;
+}
+
